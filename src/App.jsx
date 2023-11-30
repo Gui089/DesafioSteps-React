@@ -1,67 +1,74 @@
 import { useState } from "react";
 
-const steps = [
-  {
-    id: crypto.randomUUID(),
-    description: "Entender o problema do cliente",
-  },
-  {
-    id: crypto.randomUUID(),
-    description: "Desenvolver a solução do problema",
-  },
-  {
-    id: crypto.randomUUID(),
-    description:
-      "Repetir até o cliente ficar feliz e encher seu 🍑 de dinheiro",
-  },
+const weekDays = [
+  "Domingo",
+  "Segunda-feria",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
 ];
 
-const Steps = () => {
-  const [step, setStep] = useState(0);
-
-  const showStep = () => {
-    return setStep((s) => s + 1);
-  };
-
-  const previusShowSteps = () => setStep((s) => s - 1);
-
-  return (
-    <>
-      <div className="steps">
-        <button className={step === 0 ? "numbers active" : "numbers"}>1</button>
-        <button className={step === 1 ? "numbers active" : "numbers"}>2</button>
-        <button className={step === 2 ? "numbers active" : "numbers"}>3</button>
-
-        <div>
-          <h1 className="message">
-            {step + 1}: Passo {steps[step].description}
-          </h1>
-        </div>
-
-        <button onClick={previusShowSteps} className="buttons">
-          Anterior
-        </button>
-        <button onClick={showStep} className="buttons">
-          Próximo
-        </button>
-      </div>
-    </>
-  );
-};
+const arrMonths = [
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+];
 
 const App = () => {
-  const [toggle, setToggle] = useState(true);
+  const [dateNow, setDateNow] = useState(new Date());
 
-  const showToggle = () => setToggle((t) => !t);
+  const [interval, setInterval] = useState(1);
+
+  const setDateDay = () =>
+    setDateNow(
+      new Date(
+        dateNow.getFullYear(),
+        dateNow.getMonth(),
+        dateNow.getDate() + interval,
+      ),
+    );
+
+  const previousSetDateDay = () =>
+    setDateNow(
+      new Date(
+        dateNow.getFullYear(),
+        dateNow.getMonth(),
+        dateNow.getDate() - interval,
+      ),
+    );
+
+  const setInervalDate = () => setInterval((s) => s + 1);
+
+  const previusSetInterval = () => setInterval((s) => s - 1);
 
   return (
-    <>
-      <button onClick={showToggle} className="close">
-        {toggle === true ? "Fechar" : "Abrir"}
-      </button>
-
-      {toggle && <Steps />}
-    </>
+    <div className="container">
+      <div className="count">
+        <button onClick={previousSetDateDay}>-</button>
+        <h2>Intervalo: {interval}</h2>
+        <button onClick={setDateDay}>+</button>
+      </div>
+      <div className="count">
+        <button onClick={previusSetInterval}>-</button>
+        <h2>Contagem: {interval - 1}</h2>
+        <button onClick={setInervalDate}>+</button>
+      </div>
+      <h2>
+        Hoje é {weekDays[dateNow.getDay()]} , dia {dateNow.getDate()} de{" "}
+        {arrMonths[dateNow.getMonth()]} de {dateNow.getFullYear()}
+      </h2>
+    </div>
   );
 };
 

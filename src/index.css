@@ -1,101 +1,31 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: sans-serif;
   color: white;
   background-color: #292929;
 }
 
-.steps {
-  width: 600px;
-  background-color: #292929;
-  border-radius: 7px;
-  padding: 25px 100px;
-  margin: 50px auto;
-  border: 2px solid #c3c3c3;
-  margin-left: 26%;
-}
-
-.numbers {
-  display: inline-block;
-  margin-left: 72px;
-  padding: 15px;
-  border-radius: 50%;
-  background-color: #454545;
-  color: white;
-  cursor: pointer;
-}
-
-.numbers > div {
-  height: 40px;
-  aspect-ratio: 1;
-  background-color: #454545;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.active {
-  background-color: #3abc96;
-  color: #fff;
-}
-
-.message {
+.container {
   text-align: center;
-  font-size: 20px;
-  margin: 40px 0;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.buttons {
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: bold;
-  gap: 10px;
-  color: white;
-  background-color: #3abc96;
-  margin-left: 19%;
-}
-
-.buttons button span {
-  font-size: 16px;
-  line-height: 1;
-}
-
-h3 {
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.container-close {
+.count {
   display: flex;
   justify-content: center;
-  padding-top: 30px;
+  align-items: center;
+  padding: 20px;
 }
 
-.close {
-  border: 2px solid #c3c3c3;
-  background-color: #292929;
-  font-size: 12px;
-  color: #c3c3c3;
-  padding: 5px 15px;
-  border-radius: 100px;
-  font-weight: bold;
-  margin-left: 50%;
-  margin-top: 5%;
+button {
+  color: #292929;
+  background-color: white;
+  border-radius: 50%;
+  border: 0;
 }
 
-.close:hover {
+button:hover {
   cursor: pointer;
+}
+
+h2 {
+  margin: 20px;
 }
