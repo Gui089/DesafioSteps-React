@@ -1,23 +1,17 @@
-import { useState } from "react";
-
-const steps = [
-  {
-    id: crypto.randomUUID(),
-    description: "Entender o problema do cliente",
-  },
-  {
-    id: crypto.randomUUID(),
-    description: "Desenvolver a solução do problema",
-  },
-  {
-    id: crypto.randomUUID(),
-    description:
-      "Repetir até o cliente ficar feliz e encher seu 🍑 de dinheiro",
-  },
-];
+import { useEffect, useState } from "react";
 
 const Steps = () => {
+  const [steps, setSteps] = useState([]);
   const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/Gui089/fake-api-steps/main/steps.json",
+    )
+      .then((r) => r.json())
+      .then((data) => setSteps(data))
+      .catch(console.log);
+  }, []);
 
   const showStep = () => {
     return setStep((s) => (s + 1 === steps.length ? s : s + 1));
@@ -34,7 +28,7 @@ const Steps = () => {
 
         <div>
           <h1 className="message">
-            {step + 1}: Passo {steps[step].description}
+            {step + 1}: Passo {steps[step]?.description}
           </h1>
         </div>
 
